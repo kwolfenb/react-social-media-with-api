@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from "prop-types";
 import WhatsHappening from './WhatsHappening';
+// import Moment from 'moment';
 
 
 class NewPostControl extends React.Component {
@@ -10,7 +11,7 @@ class NewPostControl extends React.Component {
         this.state = {
         };
     }
-
+      
     render() {
 
 

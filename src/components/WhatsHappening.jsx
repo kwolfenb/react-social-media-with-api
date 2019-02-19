@@ -1,4 +1,5 @@
 import React from 'react'
+import Moment from 'moment';
 import { v4 } from 'uuid';
 
 function WhatsHappening(props) {
@@ -7,7 +8,7 @@ function WhatsHappening(props) {
 
     function handleNewPost(event) {
         event.preventDefault();
-        props.onNewPostCreation({ names: _names.value, message: _message.value, likes: 0, dislikes: 0, id: v4() });
+        props.onNewPostCreation({ names: _names.value, message: _message.value, likes: 0, dislikes: 0, id: v4(), timePosted: new Moment() });
         _names.value = '';
         _message.value = '';
     }
@@ -57,14 +58,14 @@ function WhatsHappening(props) {
                 </div>
                 <div style={input} >
                     <form onSubmit={handleNewPost}>
-                      <input style={inputNameField} type="text" placeholder="User Name" id='names' ref={(input) => {_names = input;}}/>
-                      <br/>
-                      <input style={inputMessageField}type='text' id='message' placeholder='Message' ref={(input) => {_message = input;}} />
-                      <button type="submit">Post</button>
+                        <input style={inputNameField} type="text" placeholder="User Name" id='names' ref={(input) => { _names = input; }} />
+                        <br />
+                        <input style={inputMessageField} type='text' id='message' placeholder='Message' ref={(input) => { _message = input; }} />
+                        <button type="submit">Post</button>
                     </form>
                 </div>
             </div>
-        </div>  
+        </div>
     )
 }
 

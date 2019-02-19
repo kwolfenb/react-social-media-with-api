@@ -14,10 +14,34 @@ class FeedList extends React.Component {
         this.handleAddingNewPostToList = this.handleAddingNewPostToList.bind(this);
     }
 
+    componentDidMount() {
+        this.waitTimeUpdateTimer = setInterval(() =>
+          this.updatePostElapsedWaitTime(),
+          5000
+        );
+      }
+
+      updatePostElapsedWaitTime() {
+        console.log("check");
+        let newMasterPostList = this.state.masterPostList.slice();
+        newMasterPostList.forEach((post) =>
+          post.formattedWaitTime = (post.timePosted).fromNow(true)
+        );
+        this.setState({masterPostList: newMasterPostList})
+      }
+
+      componentWillUnmount(){
+        clearInterval(this.waitTimeUpdateTimer);
+      }
+
+    displayTimePosted(timePosted) {
+        return timePosted.from(new Moment(), true);
+      }
+
     handleAddingNewPostToList(newPost) {
         var newMasterPostList = this.state.masterPostList.slice();
+        newPost.formattedWaitTime = (newPost.timePosted).fromNow(true)
         newMasterPostList.push(newPost);
-        console.table(newPost);
         this.setState({ masterPostList: newMasterPostList });
     }
 
@@ -44,6 +68,7 @@ class FeedList extends React.Component {
 
     render() {
         return (
+            
             <div>
                 <NewPostControl onNewPostCreation={this.handleAddingNewPostToList} />
                 {this.state.masterPostList.map((feed) =>
@@ -51,6 +76,7 @@ class FeedList extends React.Component {
                         message={feed.message}
                         likes={feed.likes}
                         dislikes={feed.dislikes}
+                        formattedWaitTime={feed.formattedWaitTime}
                         key={feed.id}
                         addLike={() => this.addLike(feed.id)}
                         addDislike={() => this.addDislike(feed.id)}
