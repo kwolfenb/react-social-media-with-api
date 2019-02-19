@@ -1,11 +1,24 @@
 import React from 'react'
+import { v4 } from 'uuid';
 
-function WhatsHappening() {
+function WhatsHappening(props) {
+    let _names = null;
+    let _message = null;
+
+    function handleNewPost(event) {
+        event.preventDefault();
+        props.onNewPostCreation({ names: _names.value, message: _message.value, likes: 0, dislikes: 0, id: v4() });
+        _names.value = '';
+        _message.value = '';
+        _likes.value = 0;
+        _dislikes.value = 0;
+
+    }
 
     let background = {
         display: 'grid',
         backgroundColor: 'skyblue',
-        height: 75,
+        height: 115,
         gridTemplateColumns: '1fr 4fr'
     }
     let profileIcon = {
@@ -15,7 +28,7 @@ function WhatsHappening() {
         backgroundColor: 'black',
         marginLeft: 'auto',
         marginRight: 'auto',
-        marginTop: 'auto',
+        marginTop: '25',
         marginBottom: 'auto',
     }
     let input = {
@@ -24,20 +37,34 @@ function WhatsHappening() {
         marginTop: 'auto',
         marginBottom: 'auto',
     }
-    let inputField = {
+    let inputNameField = {
+        margin: 5,
+        width: 400,
+        height: 25,
+        fontSize: '14px',
+        paddingLeft: '5px',
+    }
+
+    let inputMessageField = {
+        margin: 5,
         width: 400,
         height: 35,
         fontSize: '14px',
         paddingLeft: '5px',
     }
+
     return (
         <div>
             <div style={background} >
                 <div style={profileIcon} >
-
                 </div>
                 <div style={input} >
-                    <input style={inputField} type="text" placeholder="What's Happening?" />
+                    <form onSubmit={handleNewPost}>
+                      <input style={inputNameField} type="text" placeholder="User Name" id='names' ref={(input) => {_names = input;}}/>
+                      <br/>
+                      <input style={inputMessageField}type='text' id='message' placeholder='Message' ref={(input) => {_message = input;}} />
+                      <button type="submit">Post</button>
+                    </form>
                 </div>
             </div>
         </div>  

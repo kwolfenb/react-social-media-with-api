@@ -44,24 +44,23 @@ function Wrapper() {
     }
 
     return (
-      <div style={wrapper}>
-        <div style={user}>
-          <User />
-            <div style={leftText}>
-                <p>Lorum ipsum dolor sit amet, consectetur adipiscing elit. Donec eu orci et nulla ultricies commodo ac vel leo. Suspendisse non ex veneatis, rhoncus nunc sed, pretium tortor. Ut ac massa et libero tincidunt convallis. Nam porttitor odio sit amet nulla hendrerit pharetra.</p>
+        <div style={wrapper}>
+            <div style={user}>
+                <User />
+                <div style={leftText}>
+                    <p>Lorum ipsum dolor sit amet, consectetur adipiscing elit. Donec eu orci et nulla ultricies commodo ac vel leo. Suspendisse non ex veneatis, rhoncus nunc sed, pretium tortor. Ut ac massa et libero tincidunt convallis. Nam porttitor odio sit amet nulla hendrerit pharetra.</p>
+                </div>
+            </div>
+            <div style={centerColumn}>
+                <FeedList />
+            </div>
+            <div style={sideBar}>
+                <p style={title}>Lorem ipsum</p>
+                <SideBar color="brown" />
+                <SideBar color="tan" />
+                <SideBar color="green" />
             </div>
         </div>
-        <div style={centerColumn}>
-          <WhatsHappening />
-          <FeedList/>
-        </div>
-        <div style={sideBar}>
-            <p style={title}>Lorem ipsum</p>
-            <SideBar color="brown"/>
-            <SideBar color="tan"/>
-            <SideBar color="green"/>
-        </div>
-      </div>
     );
 }
 
