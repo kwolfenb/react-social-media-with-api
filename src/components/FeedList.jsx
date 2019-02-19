@@ -22,7 +22,6 @@ class FeedList extends React.Component {
       }
 
       updatePostElapsedWaitTime() {
-        console.log("check");
         let newMasterPostList = this.state.masterPostList.slice();
         newMasterPostList.forEach((post) =>
           post.formattedWaitTime = (post.timePosted).fromNow(true)
@@ -67,11 +66,12 @@ class FeedList extends React.Component {
     }
 
     render() {
+        let tempPost = this.state.masterPostList.slice();
+        tempPost.sort((a,b) => (a.likes < b.likes) ? 1 : -1)
         return (
-            
             <div>
                 <NewPostControl onNewPostCreation={this.handleAddingNewPostToList} />
-                {this.state.masterPostList.map((feed) =>
+                {tempPost.map((feed) =>
                     <Feed names={feed.names}
                         message={feed.message}
                         likes={feed.likes}
