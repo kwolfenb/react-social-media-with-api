@@ -10,9 +10,6 @@ function WhatsHappening(props) {
         props.onNewPostCreation({ names: _names.value, message: _message.value, likes: 0, dislikes: 0, id: v4() });
         _names.value = '';
         _message.value = '';
-        _likes.value = 0;
-        _dislikes.value = 0;
-
     }
 
     let background = {

@@ -63,7 +63,7 @@ function Feed(props) {
       </div>
       <div>
         <h3>{props.names}</h3>
-        <p><em>{props.content}</em></p>
+        <p><em>{props.message}</em></p>
         <hr />
         <div style={buttons}>
           <button style={Btn} onClick={props.addLike}>Like</button><p className='likes'>{props.likes}</p>
@@ -76,9 +76,11 @@ function Feed(props) {
 
 Feed.propTypes = {
   names: PropTypes.string.isRequired,
-  content: PropTypes.string,
+  message: PropTypes.string,
   likes: PropTypes.number,
-  dislikes: PropTypes.number
+  dislikes: PropTypes.number,
+  addLike: PropTypes.func,
+  addDislike: PropTypes.func
 };
 
 export default Feed;
