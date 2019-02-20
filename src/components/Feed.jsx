@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Moment from 'moment';
+import Moment from 'moment'
 
 
 function Feed(props) {
@@ -72,7 +72,7 @@ function Feed(props) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 Feed.propTypes = {
@@ -83,6 +83,6 @@ Feed.propTypes = {
   addLike: PropTypes.func,
   addDislike: PropTypes.func,
   formattedWaitTime: PropTypes.string.isRequired,
-};
+}
 
-export default Feed;
+export default Feed
