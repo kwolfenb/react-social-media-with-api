@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 
 function Navbar() {
 
@@ -51,10 +53,10 @@ function Navbar() {
     return (
         <div style={styleGrid}>
             <div>
-                <p style={navTabs}>Home</p>
+            <Link to='/'> <p style={navTabs}>Home</p> </Link>
             </div>
             <div>
-                <p style={navTabs}>Notifications</p>
+                <Link to='/notifications'> <p style={navTabs}>Notifications</p> </Link>
             </div>
             <div>
                 <p style={navTabs}>Messages</p>

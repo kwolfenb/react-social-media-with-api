@@ -1,9 +1,10 @@
 import React from 'react'
 import User from './User'
-import WhatsHappening from './WhatsHappening'
-import Feed from './Feed'
 import FeedList from './FeedList'
 import SideBar from './SideBar'
+import { Switch, Route } from 'react-router-dom';
+import Notifications from './Notifications'
+import News from './News'
 
 function Wrapper() {
     let wrapper = {
@@ -48,11 +49,14 @@ function Wrapper() {
             <div style={user}>
                 <User />
                 <div style={leftText}>
-                    <p>Lorum ipsum dolor sit amet, consectetur adipiscing elit. Donec eu orci et nulla ultricies commodo ac vel leo. Suspendisse non ex veneatis, rhoncus nunc sed, pretium tortor. Ut ac massa et libero tincidunt convallis. Nam porttitor odio sit amet nulla hendrerit pharetra.</p>
+                <News />
                 </div>
             </div>
             <div style={centerColumn}>
-                <FeedList />
+                <Switch>
+                    <Route exact path='/' component={FeedList} />
+                    <Route path='/notifications' component={Notifications}/>
+                </Switch>
             </div>
             <div style={sideBar}>
                 <p style={title}>Lorem ipsum</p>
